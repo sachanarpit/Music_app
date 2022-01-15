@@ -58,14 +58,6 @@ export const ArtistCard = ({ image, song_name, singer, year, id }) => {
             <CardDes>
               {singer} | {year}
             </CardDes>
-            <br />
-            <button
-              onClick={() => {
-                console.log(id);
-              }}
-            >
-              Explore Now
-            </button>
           </center>
         </MusicCard>
       </Link>

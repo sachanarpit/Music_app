@@ -34,7 +34,11 @@ export const Home = () => {
         fetchData={fetchData}
         setFetchData={setFetchData}
       />
-      <FilterSec artist={artist} />
+      <FilterSec
+        artist={artist}
+        fetchData={fetchData}
+        setFetchData={setFetchData}
+      />
 
       <CardGrid>
         {fetchData ? (
