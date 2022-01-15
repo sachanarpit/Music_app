@@ -26,12 +26,13 @@ export const Navbar = ({ search, setSearch, fetchData, setFetchData }) => {
             alt="logo"
           />
         </div>
-        <SearchSec>
-          <SearchBar className="searchbar">
+        <SearchSec className="mt-3">
+          <SearchBar className="input-group flex-nowrap">
             <SearchInput
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              className="form-control"
             />
             <SearchBtn
               onClick={() => {
@@ -40,6 +41,7 @@ export const Navbar = ({ search, setSearch, fetchData, setFetchData }) => {
                 );
                 setFetchData(res);
               }}
+              className="input-group-text"
             >
               🔍
             </SearchBtn>

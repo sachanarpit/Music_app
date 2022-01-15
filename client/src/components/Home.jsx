@@ -73,33 +73,53 @@ export const Home = () => {
           <>loading</>
         )}
       </CardGrid>
-      <div>
+      <div className="row">
         <center>
-          {currentPage <= 1 ? (
-            <button disabled>⏮️</button>
-          ) : (
-            <button
-              onClick={() => {
-                setCurrentPage(currentPage - 1);
-              }}
-            >
-              ⏮️
-            </button>
-          )}
-          <p>
+          <div className="col">
+            {currentPage <= 1 ? (
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                disabled
+              >
+                ⏮️
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                }}
+              >
+                ⏮️
+              </button>
+            )}
+          </div>
+          <p className="fw-bold">
             <b>{currentPage}</b>
           </p>
-          {currentPage > pages ? (
-            <button disabled>⏭️</button>
-          ) : (
-            <button
-              onClick={() => {
-                setCurrentPage(currentPage + 1);
-              }}
-            >
-              ⏭️
-            </button>
-          )}
+          <div className="col">
+            {currentPage > pages ? (
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                disabled
+              >
+                ⏭️
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-outline-primary"
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                ⏭️
+              </button>
+            )}
+          </div>
         </center>
       </div>
     </div>

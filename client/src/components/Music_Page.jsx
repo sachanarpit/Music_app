@@ -41,6 +41,10 @@ export const MusicPage = ({ id }) => {
               </div>
             </section>
           </div>
+          <h2 className="h2">
+            <center>Songs List</center>
+          </h2>
+          <br />
           <SongList songs={fetchData.songs} />
         </section>
       ) : (

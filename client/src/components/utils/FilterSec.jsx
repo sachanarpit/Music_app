@@ -9,18 +9,25 @@ export const FilterSec = ({ artist, fetchData, setFetchData }) => {
     setFetchData(ans);
   };
   return (
-    <div>
-      <div>
-        <select name="" id="">
-          <option value="hello">hello</option>
-          <option value="hello">hello</option>
-          <option value="hello">hello</option>
-        </select>
-      </div>
-
+    <div className="m-4">
       <div className="sortYear">
-        <button onClick={handleLtH}>sort by old song</button>
-        <button onClick={handleHtL}>sort Year- High to Low</button>
+        <center>
+          <button
+            type="button"
+            className="btn btn-outline-danger"
+            onClick={handleLtH}
+          >
+            sort by old song
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-outline-success"
+            onClick={handleHtL}
+          >
+            sort Year- High to Low
+          </button>
+        </center>
       </div>
     </div>
   );
