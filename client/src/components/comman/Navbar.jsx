@@ -14,7 +14,9 @@ const SearchInput = styled.input``;
 
 const SearchBtn = styled.button``;
 
-export const Navbar = () => {
+const handleSubmit = () => {};
+
+export const Navbar = ({ search, setSearch, fetchData, setFetchData }) => {
   return (
     <>
       <NavbarSec>
@@ -26,8 +28,21 @@ export const Navbar = () => {
         </div>
         <SearchSec>
           <SearchBar className="searchbar">
-            <SearchInput type="text" />
-            <SearchBtn>🔍</SearchBtn>
+            <SearchInput
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <SearchBtn
+              onClick={() => {
+                let res = fetchData.filter((x) =>
+                  x.album_name.includes(search)
+                );
+                setFetchData(res);
+              }}
+            >
+              🔍
+            </SearchBtn>
           </SearchBar>
         </SearchSec>
         <div></div>

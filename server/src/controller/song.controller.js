@@ -49,13 +49,18 @@ router.get("/", async (req, res) => {
     const response6 = await fetchData(arrOfArtist[5]);
     const response7 = await fetchData(arrOfArtist[6]);
     let output = [
-      ...response1,
-      ...response2,
-      ...response3,
-      ...response4,
-      ...response5,
-      ...response6,
-      ...response7,
+      { artist: arrOfArtist },
+      {
+        output: [
+          ...response1,
+          ...response2,
+          ...response3,
+          ...response4,
+          ...response5,
+          ...response6,
+          ...response7,
+        ],
+      },
     ];
     res.status(200).json(output);
   } catch (err) {

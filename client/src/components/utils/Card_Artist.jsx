@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { MusicPage } from "../Music_Page";
 
 const MusicCard = styled.div`
   box-sizing: border-box;
-  width: 22%;
-  height: 320px;
+  width: 98%;
+
+  max-height: 360px;
   border-radius: 15px;
   background: #242424;
   padding: 25px 20px;
@@ -11,9 +14,11 @@ const MusicCard = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: white;
+  margin-bottom: 10px;
   &:hover {
     opacity: 0.5;
     cursor: pointer;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 `;
 
@@ -37,19 +42,33 @@ const CardDes = styled.p`
   overflow: hidden;
 `;
 
-export const ArtistCard = () => {
+export const ArtistCard = ({ image, song_name, singer, year, id }) => {
   return (
     <>
-      <MusicCard>
-        <CardImg
-          src="http://c.saavncdn.com/382/Rockstar-Telugu-2021-20210503221958-500x500.jpg"
-          alt=""
-        />
-        <center>
-          <CardHeading>let me love you</CardHeading>
-          <CardDes>Arijit Singh | 2020</CardDes>
-        </center>
-      </MusicCard>
+      <Link
+        to={{
+          pathname: "/music",
+          state: id,
+        }}
+      >
+        <MusicCard className="fadeIn">
+          <CardImg src={image} alt="" />
+          <center>
+            <CardHeading>{song_name}</CardHeading>
+            <CardDes>
+              {singer} | {year}
+            </CardDes>
+            <br />
+            <button
+              onClick={() => {
+                console.log(id);
+              }}
+            >
+              Explore Now
+            </button>
+          </center>
+        </MusicCard>
+      </Link>
     </>
   );
 };
