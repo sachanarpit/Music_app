@@ -36,7 +36,7 @@ export const Home = () => {
   `;
 
   useEffect(() => {
-    Fetching(`http://localhost:4000/song`);
+    Fetching(`https://radiant-spire-52223.herokuapp.com/song`);
   }, []);
 
   useEffect(() => {
