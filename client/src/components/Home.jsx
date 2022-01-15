@@ -8,6 +8,9 @@ export const Home = () => {
   const [fetchData, setFetchData] = useState([]);
   const [search, setSearch] = useState("");
   const [artist, setArtist] = useState([]);
+  const [paginationData, setPaginationData] = useState([]);
+  const [pages, setPages] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const Fetching = async (url) => {
     let x = await axios.get(url);
@@ -16,6 +19,15 @@ export const Home = () => {
     setFetchData(data);
 
     setArtist(artistfetch);
+    // console.log(data.length);
+    setPages(data.length / 8);
+  };
+
+  const Pagination = () => {
+    const startIndex = currentPage * 8 - 8;
+    const endIndex = startIndex + 8;
+    let paginationData = fetchData.slice(startIndex, endIndex);
+    setPaginationData(paginationData);
   };
 
   const CardGrid = styled.div`
@@ -26,6 +38,11 @@ export const Home = () => {
   useEffect(() => {
     Fetching(`http://localhost:4000/song`);
   }, []);
+
+  useEffect(() => {
+    Pagination();
+  }, [fetchData, currentPage]);
+
   return (
     <div>
       <Navbar
@@ -42,19 +59,49 @@ export const Home = () => {
 
       <CardGrid>
         {fetchData ? (
-          fetchData.map((x) => (
+          paginationData.map((x) => (
             <ArtistCard
               image={x.album_image}
               song_name={x.album_name}
               singer={x.album_artist}
               year={x.year}
               id={x.album_id}
+              key={x.id}
             />
           ))
         ) : (
           <>loading</>
         )}
       </CardGrid>
+      <div>
+        <center>
+          {currentPage <= 1 ? (
+            <button disabled>⏮️</button>
+          ) : (
+            <button
+              onClick={() => {
+                setCurrentPage(currentPage - 1);
+              }}
+            >
+              ⏮️
+            </button>
+          )}
+          <p>
+            <b>{currentPage}</b>
+          </p>
+          {currentPage > pages ? (
+            <button disabled>⏭️</button>
+          ) : (
+            <button
+              onClick={() => {
+                setCurrentPage(currentPage + 1);
+              }}
+            >
+              ⏭️
+            </button>
+          )}
+        </center>
+      </div>
     </div>
   );
 };

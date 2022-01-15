@@ -63,6 +63,7 @@ router.get("/", async (req, res) => {
       },
     ];
     res.status(200).json(output);
+    console.log("succesfully req complete");
   } catch (err) {
     res.status(500).json({ message: err });
   }
