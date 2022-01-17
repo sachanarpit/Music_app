@@ -20,7 +20,7 @@ export const SongList = ({ songs }) => {
                   ▶️ play now
                 </button>
                 <span>
-                  <a href={x.download_links[0]} target="_blank">
+                  <a href={x.download_links[0]} target="_blank" download>
                     <button className="btn btn-outline-danger">
                       🔻Download Now
                     </button>
