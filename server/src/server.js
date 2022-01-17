@@ -1,6 +1,8 @@
 //import
 const express = require("express");
 const cors = require("cors");
+const connect = require("./config/db");
+
 require("dotenv").config();
 const songcontroller = require("./controller/song.controller");
 const app = express();
@@ -17,7 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/song", songcontroller);
 
 //server
-const start = () => {
+const start = async () => {
+  await connect();
   app.listen(port, () => {
     console.log("listing to port " + port);
   });
