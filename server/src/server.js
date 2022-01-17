@@ -5,6 +5,7 @@ const connect = require("./config/db");
 
 require("dotenv").config();
 const songcontroller = require("./controller/song.controller");
+const artistController = require("./controller/artist.controller");
 const app = express();
 const port = process.env.PORT;
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/song", songcontroller);
+app.use("/artist", artistController);
 
 //server
 const start = async () => {

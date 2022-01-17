@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const connect = () => {
-  return mongoose.connect(`mongodb://127.0.0.1:27017/music_app`);
+  return mongoose.connect(
+    `mongodb+srv://arpit:arpit987@cluster0.fcpui.mongodb.net/musicApp?retryWrites=true&w=majority`
+  );
 };
 
 module.exports = connect;
