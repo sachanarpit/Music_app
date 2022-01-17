@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const artistSchama = new mongoose.Schema({
   name: { type: String },
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   photo: { type: String },
 });
