@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const connect = () => {
-  return mongoose.connect(
-    `mongodb+srv://arpit:arpit987@cluster0.fcpui.mongodb.net/musicApp?retryWrites=true&w=majority`
-  );
+  return mongoose.connect(process.env.URI);
 };
 
 module.exports = connect;
